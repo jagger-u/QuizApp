@@ -1,9 +1,6 @@
 from quizClass import QA, Question, Answer
-from SHOW.display import displayAllQA, displayAllQuestions, displayAllAnswers, showAllQA
 from storage import ALL_QUESTIONS
-from EVAL.ask import ask, countHowManyCorrect
-import pytest
-
+from ask import ask, countHowManyCorrect
 
 
 """
@@ -18,30 +15,30 @@ Description:
     - So there is a many to many relation
 """
 # Questions
-question_howManyDaysInYear = Question.createQuestion("How many days are in a year?")
-question_howManyDaysInWeek = Question.createQuestion("How many days are in a week?")
+question_howManyDaysInYear = Question.insertQuestion("How many days are in a year?")
+question_howManyDaysInWeek = Question.insertQuestion("How many days are in a week?")
 
 # Answers
-answer_300 = Answer.createAnswer("300")
-answer_400 = Answer.createAnswer("400")
-answer_365 = Answer.createAnswer("365")
-answer_7 = Answer.createAnswer("7")
-answer_100 = Answer.createAnswer("100")
-answer_not8 = Answer.createAnswer("Not 8")
-answer_seven = Answer.createAnswer("Seven")
+answer_300 = Answer.insertAnswer("300")
+answer_400 = Answer.insertAnswer("400")
+answer_365 = Answer.insertAnswer("365")
+answer_7 = Answer.insertAnswer("7")
+answer_100 = Answer.insertAnswer("100")
+answer_not8 = Answer.insertAnswer("Not 8")
+answer_seven = Answer.insertAnswer("Seven")
 
 # QA for question_howManyDaysInYear
-QA.createQA(question_howManyDaysInYear, answer_300, False)
-QA.createQA(question_howManyDaysInYear, answer_400, False)
-QA.createQA(question_howManyDaysInYear, answer_365, True)
-QA.createQA(question_howManyDaysInYear, answer_7, False)
+QA.insertQA(question_howManyDaysInYear, answer_300, False)
+QA.insertQA(question_howManyDaysInYear, answer_400, False)
+QA.insertQA(question_howManyDaysInYear, answer_365, True)
+QA.insertQA(question_howManyDaysInYear, answer_7, False)
 
 # QA for question_howManyDaysInWeek
-QA.createQA(question_howManyDaysInWeek, answer_7, True)
-QA.createQA(question_howManyDaysInWeek, answer_not8, True)
-QA.createQA(question_howManyDaysInWeek, answer_seven, True)
-QA.createQA(question_howManyDaysInWeek, answer_400, False)
-QA.createQA(question_howManyDaysInWeek, answer_100, False)
+QA.insertQA(question_howManyDaysInWeek, answer_7, True)
+QA.insertQA(question_howManyDaysInWeek, answer_not8, True)
+QA.insertQA(question_howManyDaysInWeek, answer_seven, True)
+QA.insertQA(question_howManyDaysInWeek, answer_400, False)
+QA.insertQA(question_howManyDaysInWeek, answer_100, False)
 
 
 """
@@ -49,14 +46,14 @@ DISPLAY
     - All questions and the answers of each
 """
 print("")
-displayAllQA()
+QA.displayAllQA()
 print("")
-displayAllQuestions()
+Question.displayAllQuestions()
 print("")
-displayAllAnswers()
+Answer.displayAllAnswers()
 
 print("")
-showAllQA()
+QA.showAllQA()
 
 """
 STDIN

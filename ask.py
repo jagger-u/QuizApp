@@ -1,4 +1,4 @@
-from CRUD.read import getAnswersForQuestion
+from quizClass import Question
 from storage import ALL_LETTERS, ALL_QA, ALL_QUESTIONS, ALL_ANSWERS
 
 def ask():
@@ -6,7 +6,7 @@ def ask():
     total_correct = 0
     total_correct_by_user = 0
     for idx, question in enumerate(ALL_QUESTIONS):
-        answers = getAnswersForQuestion(question)
+        answers = question.allAnswers
         print(f"\t{idx+1}) {question.textContent}")
         correctAnswers = []
         for idx, a in enumerate(answers):
