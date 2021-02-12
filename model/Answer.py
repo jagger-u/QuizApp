@@ -1,4 +1,4 @@
-from functions.helperFunc import generateID, trueFalseColored
+from functions.helperFunc import generateID
 from data.data import ALL_LETTERS, ALL_QA, ALL_QUESTIONS, ALL_ANSWERS
 
 class Answer:
