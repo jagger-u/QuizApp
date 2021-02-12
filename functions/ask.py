@@ -10,9 +10,11 @@ def ask():
     total_correct = 0
     total_correct_by_user = 0
 
+    user_raw_input = None
+
     for i, question in enumerate(ALL_QUESTIONS):
         trials = 0
-        time.sleep(3)
+        time.sleep(1)
         while True:
             print(f"\t{i+1}) {question.textContent} {max_trials - trials} trials left. Score: {total_correct_by_user}")
             correctAnswers = []
@@ -23,9 +25,11 @@ def ask():
                 print(f"\t\t{the_letter}) {a['answer'].textContent}")
                 if a['correctNess'] == True:
                     correctAnswers.append(the_letter)
-
-            user_inputs = input("Enter answer: ").split(',')
-
+            user_raw_input = input("[AskLoop:] Enter answer: ")
+            user_inputs = user_raw_input.split(',')
+            if user_raw_input == 'quit':
+                print("leaving while loop in ask()...")
+                break
             num_correct = len(correctAnswers)
             num_correct_by_user = countHowManyCorrect(user_inputs, correctAnswers)
 
@@ -44,9 +48,13 @@ def ask():
                 break
             else:
                 trials += 1
-
-
+        if user_raw_input == 'quit':
+            print("leaving for loop in ask()...")
+            break
     print(f"Final: {total_correct_by_user}/{total_correct}")
+    return user_raw_input
+
+
 
 
 def countHowManyCorrect(user_inputs, listItems_to_match):

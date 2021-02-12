@@ -3,7 +3,7 @@ from model.Question import Question
 from model.Answer import Answer
 from data.data import ALL_QUESTIONS
 from functions.ask import ask, countHowManyCorrect
-
+from model.Terminal import Terminal
 
 """
 CREATE 
@@ -61,6 +61,18 @@ QA.showAllQA()
 STDIN
     Now we will ask and correct it
 """
-print("")
-ask()
+print(Terminal.paintHeader(Terminal.writeHeader('Welcome to the Quiz!')))
+print('Options:')
+print('\t- To give a quiz, write "go"')
+print('\t- To exit, write "quit"')
+while True:
+    user_input = input("[Mainloop] Enter option: ")
+    if user_input == 'quit':
+        print(Terminal.paintFooter(Terminal.writeFooter("[Mainloop] Leaving...")))
+        break
+    elif user_input == 'go':
+        print(Terminal.paintBlue("Starting quiz..."))
+        ask()
+    else:
+        print(Terminal.paintFail("Invalid input, try again..."))
 
