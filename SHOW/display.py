@@ -1,4 +1,3 @@
-from CRUD.create import createQA, createQuestion, createAnswer
 from CRUD.read import getAnswersForQuestion
 from storage import ALL_LETTERS, ALL_QA, ALL_QUESTIONS, ALL_ANSWERS
 from helperFunc import trueFalseColored

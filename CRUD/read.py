@@ -1,4 +1,3 @@
-from quizClass import QuestionAnswer, Question, Answer
 from storage import ALL_LETTERS, ALL_QA, ALL_QUESTIONS, ALL_ANSWERS
 
 def getAnswerById(answer_id):
