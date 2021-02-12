@@ -1,6 +1,8 @@
-from quizClass import QA, Question, Answer
-from storage import ALL_QUESTIONS
-from ask import ask, countHowManyCorrect
+from model.QA import QA
+from model.Question import Question
+from model.Answer import Answer
+from data.data import ALL_QUESTIONS
+from functions.ask import ask, countHowManyCorrect
 
 
 """

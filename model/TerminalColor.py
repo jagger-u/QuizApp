@@ -3,7 +3,7 @@
     Description: colors for the terminal
     Link: https://stackoverflow.com/questions/287871/how-to-print-colored-text-to-the-terminal
 """
-class bcolors:
+class TerminalColor:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKCYAN = '\033[96m'

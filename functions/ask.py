@@ -1,5 +1,5 @@
-from quizClass import Question
-from storage import ALL_LETTERS, ALL_QA, ALL_QUESTIONS, ALL_ANSWERS
+from model.Question import Question
+from data.data import ALL_LETTERS, ALL_QA, ALL_QUESTIONS, ALL_ANSWERS
 
 def ask():
     print(f"--- Please answer the following questions ---")

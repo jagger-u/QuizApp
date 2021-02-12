@@ -1,4 +1,4 @@
-from ask import countHowManyCorrect
+from functions.ask import countHowManyCorrect
 import pytest
 
 @pytest.mark.parametrize('input_list_, comparison_list_, result', 
