@@ -63,6 +63,7 @@ STDIN
 """
 print(Terminal.paintHeader(Terminal.writeHeader('Welcome to the Quiz!')))
 print('Options:')
+print('\t- To create a quiz, write "create"')
 print('\t- To give a quiz, write "go"')
 print('\t- To exit, write "quit"')
 while True:
@@ -70,6 +71,64 @@ while True:
     if user_input == 'quit':
         print(Terminal.paintFooter(Terminal.writeFooter("[Mainloop] Leaving...")))
         break
+    elif user_input == 'create':
+        all_answers = []
+
+        print(Terminal.paintBlue("[Step 1]: Create a question"))
+        user_input = input("Enter the question: ")
+        new_question = user_input
+
+        print(Terminal.paintBlue(f'[Step 2]: Create the answer(s) for "{new_question}"'))
+
+        while True:
+            user_input = input("Enter the answer: ")
+            if user_input == 'quit':
+                print("Leaving 'create'")
+                break
+            new_answer = user_input
+            
+
+
+
+            while True:
+                user_input = input("Is it a correct answer to that question? [y/n]: ")                
+                if user_input == 'y':
+                    all_answers.append({"answer": new_answer, "correctNess": True})
+                    break
+                elif user_input  == 'n':
+                    all_answers.append({"answer": new_answer, "correctNess": False})
+                    break
+                elif user_input == 'quit':
+                    print("Leaving correct answer or not")
+                    break
+                else:
+                    print(Terminal.paintFail("Invalid input, please enter [y/n] or write [quit] to exit."))
+
+
+            while True:
+                user_input = input("Add another? [y/n]: ")
+                if user_input == 'n':
+                    user_input = 'quit'
+                    break
+                elif user_input == 'y':
+                    break
+                else:
+                    print(Terminal.paintFail("Invalid input, please enter [y/n] or write [quit] to exit."))
+            if user_input == 'quit':
+                break
+
+        print(Terminal.paintGreen("Saving..."))
+        # TODO: need to save changes, update the models etc...
+        # TODO: need to create a truth table sort of thing, map out all the possibilities   ...
+        # TODO: need to run tests! Write all the test cases...
+        print(f'\t {new_question}')
+        for item in all_answers:
+            print(f'\t\t- {item["answer"]} ({item["correctNess"]})')
+        print(Terminal.paintGreen("Saved."))
+
+
+
+
     elif user_input == 'go':
         print(Terminal.paintBlue("Starting quiz..."))
         ask()
