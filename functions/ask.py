@@ -51,7 +51,7 @@ def ask():
         if user_raw_input == 'quit':
             print("leaving for loop in ask()...")
             break
-    print(f"Final: {total_correct_by_user}/{total_correct}")
+    print(Terminal.paintSummary(f"\nFinal score: {total_correct_by_user}/{total_correct}\n"))
     return user_raw_input
 
 

@@ -33,6 +33,10 @@ class Terminal:
     @classmethod
     def paintFooter(cls, input_text):
         return f"{cls.FAIL}{input_text}{cls.ENDC}"
+
+    @classmethod
+    def paintSummary(cls, input_text):
+        return f"{cls.BOLD}{cls.OKCYAN}{input_text}{cls.ENDC}"
         
     @classmethod
     def writeHeader(cls, input_text):
