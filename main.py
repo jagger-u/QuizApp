@@ -72,7 +72,7 @@ while True:
         print(Terminal.paintFooter(Terminal.writeFooter("[Mainloop] Leaving...")))
         break
     elif user_input == 'create':
-        all_answers = []
+        all_answerDicts = []
 
         print(Terminal.paintBlue("[Step 1]: Create a question"))
         user_input = input("Enter the question: ")
@@ -93,10 +93,10 @@ while True:
             while True:
                 user_input = input("Is it a correct answer to that question? [y/n]: ")                
                 if user_input == 'y':
-                    all_answers.append({"answer": new_answer, "correctNess": True})
+                    all_answerDicts.append({"answer": new_answer, "correctNess": True})
                     break
                 elif user_input  == 'n':
-                    all_answers.append({"answer": new_answer, "correctNess": False})
+                    all_answerDicts.append({"answer": new_answer, "correctNess": False})
                     break
                 elif user_input == 'quit':
                     print("Leaving correct answer or not")
@@ -118,12 +118,20 @@ while True:
                 break
 
         print(Terminal.paintGreen("Saving..."))
-        # TODO: need to save changes, update the models etc...
         # TODO: need to create a truth table sort of thing, map out all the possibilities   ...
         # TODO: need to run tests! Write all the test cases...
+
+        # This is the logic to save, may need refactoring: TODO: Refactor this, delegate this out to a function
+        new_questionObj = Question.insertQuestion(new_question)
+        for answerDict in all_answerDicts:
+            answerObj = Answer.insertAnswer(answerDict["answer"])
+            correctNess = answerDict["correctNess"]
+            QA.insertQA(new_questionObj, answerObj, correctNess)
+            
+            
         print(f'\t {new_question}')
-        for item in all_answers:
-            print(f'\t\t- {item["answer"]} ({item["correctNess"]})')
+        for answerDict in all_answerDicts:
+            print(f'\t\t- {answerDict["answer"]} ({answerDict["correctNess"]})')
         print(Terminal.paintGreen("Saved."))
 
 
